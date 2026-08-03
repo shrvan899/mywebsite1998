@@ -1,17 +1,10 @@
-<!doctype html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Subhash Homoeo Clinic | 15+ Years of Clinical Excellence & Holistic Healing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/mywebsite1998/assets/index-B2jPMLUY.js"></script>
-    <link rel="stylesheet" crossorigin href="/mywebsite1998/assets/index-CvG5HSSp.css">
-  </head>
-  <body class="bg-slate-950 text-white font-['Inter',sans-serif] antialiased selection:bg-emerald-500/30 selection:text-emerald-200 min-h-screen">
-    <div id="root"></div>
-  </body>
-</html>
+"scripts": {
+  "dev": "vite --port=3000 --host=0.0.0.0",
+  "build": "vite build",
+  "preview": "vite preview",
+  "clean": "rm -rf dist server.js",
+  "lint": "tsc --noEmit",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+}
 
