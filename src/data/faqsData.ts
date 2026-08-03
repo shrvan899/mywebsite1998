@@ -34,7 +34,7 @@ export const FAQS_DATA: FAQItem[] = [
   {
     id: 'faq-6',
     question: 'Where is Subhash Homoeo Clinic located for in-person doctor visits?',
-    answer: 'Our physical clinic is located at Shop 06, Centre Market, Laxmi Market, Sector -4, Bokaro Steel City, Jharkhand. You can book an in-person clinic slot online or call us at +91 93418 72726 before visiting.',
+    answer: 'Our physical clinic is located at Shop 06, Centre Market, Laxmi Market, Sector -4, Bokaro Steel City, Jharkhand. You can book an online consultation slot or call us at +91 98013 60376 before visiting.',
     category: 'general'
   },
   {

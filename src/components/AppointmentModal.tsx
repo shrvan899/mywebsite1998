@@ -24,12 +24,11 @@ interface AppointmentModalProps {
 
 export const AppointmentModal: React.FC<AppointmentModalProps> = ({
   isOpen,
-  initialType = 'clinic',
   onClose
 }) => {
   const [step, setStep] = useState<'form' | 'success'>('form');
   const [formData, setFormData] = useState<AppointmentFormData>({
-    consultationType: initialType,
+    consultationType: 'online',
     patientName: '',
     phone: '',
     email: '',
@@ -51,10 +50,17 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
     const ref = 'SHC-' + Math.floor(100000 + Math.random() * 900000);
     setBookingRef(ref);
     setStep('success');
+
+    const msgText = encodeURIComponent(
+      `Hello Dr. Subhash Clinic,\nI have submitted an Online Consultation booking request.\n*Ref Code:* ${ref}\n*Patient Name:* ${formData.patientName}\n*Phone:* ${formData.phone}\n*Age/Gender:* ${formData.age} yrs (${formData.gender})\n*City:* ${formData.city}\n*Preferred Date:* ${formData.preferredDate}\n*Time Slot:* ${formData.preferredTimeSlot}\n*Condition:* ${formData.conditionCategory}\n*Details:* ${formData.symptomDetails || 'N/A'}`
+    );
+
+    // Auto-open WhatsApp
+    window.open(`https://wa.me/919801360376?text=${msgText}`, '_blank');
   };
 
   const whatsappText = encodeURIComponent(
-    `Hello Dr. Subhash Clinic,\nI have registered an appointment booking request.\n*Ref Code:* ${bookingRef}\n*Name:* ${formData.patientName}\n*Type:* ${formData.consultationType === 'clinic' ? 'In-Clinic Visit' : 'Online Video Consultation'}\n*Date:* ${formData.preferredDate}\n*Slot:* ${formData.preferredTimeSlot}\n*Condition:* ${formData.conditionCategory}\n*City:* ${formData.city || 'Bokaro'}`
+    `Hello Dr. Subhash Clinic,\nI have submitted an Online Consultation booking request.\n*Ref Code:* ${bookingRef}\n*Patient Name:* ${formData.patientName}\n*Phone:* ${formData.phone}\n*Age/Gender:* ${formData.age} yrs (${formData.gender})\n*City:* ${formData.city}\n*Preferred Date:* ${formData.preferredDate}\n*Time Slot:* ${formData.preferredTimeSlot}\n*Condition:* ${formData.conditionCategory}\n*Details:* ${formData.symptomDetails || 'N/A'}`
   );
 
   return (
@@ -69,10 +75,10 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
             </div>
             <div>
               <h3 className="font-display font-bold text-lg text-white">
-                {step === 'form' ? 'Schedule a Consultation' : 'Appointment Confirmed!'}
+                {step === 'form' ? 'Schedule Online Consultation' : 'Appointment Confirmed!'}
               </h3>
               <p className="text-xs text-emerald-300/80">
-                {step === 'form' ? 'Choose In-Clinic Visit or Online Consultation' : 'Your consultation slot has been reserved'}
+                {step === 'form' ? 'Expert Homeopathic Tele-Consultation Pan-India' : 'Your consultation slot has been reserved'}
               </p>
             </div>
           </div>
@@ -90,42 +96,11 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
           {step === 'form' ? (
             <form onSubmit={handleSubmit} className="space-y-6">
               
-              {/* Type Switcher */}
-              <div className="grid grid-cols-2 gap-3 p-1.5 bg-white/5 border border-white/10 rounded-2xl">
-                <button
-                  type="button"
-                  onClick={() => setFormData({ ...formData, consultationType: 'clinic' })}
-                  className={`py-3 px-4 rounded-xl font-display text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
-                    formData.consultationType === 'clinic'
-                      ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/20 border border-white/20'
-                      : 'text-slate-300 hover:text-white hover:bg-white/10'
-                  }`}
-                >
-                  <Building2 className="w-4 h-4 text-emerald-200" />
-                  <span>In-Clinic Visit (Bokaro)</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setFormData({ ...formData, consultationType: 'online' })}
-                  className={`py-3 px-4 rounded-xl font-display text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
-                    formData.consultationType === 'online'
-                      ? 'bg-gradient-to-r from-teal-500 to-cyan-600 text-white shadow-lg shadow-teal-500/20 border border-white/20'
-                      : 'text-slate-300 hover:text-white hover:bg-white/10'
-                  }`}
-                >
-                  <Video className="w-4 h-4 text-cyan-200" />
-                  <span>Online Consultation</span>
-                </button>
-              </div>
-
               {/* Consultation Context Banner */}
               <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-200 flex items-center gap-2.5">
                 <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0" />
                 <span>
-                  {formData.consultationType === 'clinic' 
-                    ? 'Visit Dr. Subhash at Laxmi Market, Sector-4, Bokaro Steel City.'
-                    : 'Get prescribed medicines delivered to your home anywhere in India via SpeedPost/Courier.'}
+                  Consult Dr. Subhash via video/phone call. Prescribed medicines will be delivered directly to your doorstep anywhere in India.
                 </span>
               </div>
 
@@ -324,7 +299,7 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
               {/* Action Buttons */}
               <div className="space-y-3 max-w-md mx-auto pt-2">
                 <a
-                  href={`https://wa.me/919341872726?text=${whatsappText}`}
+                  href={`https://wa.me/919801360376?text=${whatsappText}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-emerald-600/30 border border-emerald-500/40 text-emerald-200 py-3.5 px-4 rounded-2xl font-display font-bold text-sm shadow-md hover:bg-emerald-600/50 transition-colors flex items-center justify-center gap-2"

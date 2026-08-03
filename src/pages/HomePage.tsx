@@ -96,20 +96,22 @@ export const HomePage: React.FC<HomePageProps> = ({
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <button
-                onClick={() => onOpenBookingModal('clinic')}
+                onClick={() => onOpenBookingModal('online')}
                 className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-7 py-4 rounded-2xl font-display font-bold text-sm shadow-lg shadow-emerald-500/20 hover:brightness-110 active:scale-95 transition-all flex items-center gap-2.5 border border-white/20"
               >
-                <Calendar className="w-4 h-4 text-emerald-100" />
-                <span>Book Clinic Visit (Bokaro)</span>
+                <Sparkles className="w-4 h-4 text-emerald-100" />
+                <span>Book Online Consultation</span>
               </button>
 
-              <button
-                onClick={() => onOpenBookingModal('online')}
-                className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-7 py-4 rounded-2xl font-display font-semibold text-sm hover:bg-white/20 active:scale-95 transition-all flex items-center gap-2"
+              <a
+                href="https://wa.me/919801360376?text=Hello%20Subhash%20Homoeo%20Clinic,%20I%20would%20like%20to%20inquire%20about%20an%20online%20consultation."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 px-7 py-4 rounded-2xl font-display font-semibold text-sm hover:bg-emerald-600/40 active:scale-95 transition-all flex items-center gap-2"
               >
-                <Sparkles className="w-4 h-4 text-cyan-300" />
-                <span>Online Consultation</span>
-              </button>
+                <MessageCircle className="w-5 h-5 fill-current text-emerald-400" />
+                <span>WhatsApp Us</span>
+              </a>
             </div>
 
           </div>
@@ -497,7 +499,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="flex flex-wrap gap-4 pt-2">
                 <div className="flex items-center gap-2 text-xs text-emerald-200">
                   <PhoneCall className="w-4 h-4 text-[#D8F3DC]" />
-                  <span>Call: +91 93418 72726</span>
+                  <span>Call: +91 98013 60376</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-emerald-200">
                   <Truck className="w-4 h-4 text-[#D8F3DC]" />
@@ -506,74 +508,37 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
             </div>
 
-            {/* Quick Callback Form */}
-            <div className="lg:col-span-5 bg-white text-slate-900 p-6 rounded-3xl shadow-xl space-y-4">
-              <h4 className="font-display font-bold text-lg text-[#1B4332] text-center">
-                Request a Quick Callback
+            {/* Online Consultation CTA Box */}
+            <div className="lg:col-span-5 bg-white text-slate-900 p-8 rounded-3xl shadow-xl space-y-5 text-center">
+              <div className="w-12 h-12 rounded-2xl bg-[#D8F3DC] text-[#2D6A4F] mx-auto flex items-center justify-center font-bold">
+                <Sparkles className="w-6 h-6" />
+              </div>
+              <h4 className="font-display font-bold text-xl text-[#1B4332]">
+                Book Online Consultation
               </h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Connect directly with Dr. Subhash via video/voice call. Prescribed natural medicines delivered right to your home anywhere in India.
+              </p>
 
-              {callbackSent ? (
-                <div className="p-4 bg-[#D8F3DC] text-[#2D6A4F] rounded-2xl text-center text-xs font-semibold space-y-1">
-                  <CheckCircle2 className="w-8 h-8 mx-auto" />
-                  <p>Request Received! Our clinic desk will call you within 2 hours.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleCallbackSubmit} className="space-y-3">
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Ramesh Singh"
-                      value={callbackForm.name}
-                      onChange={(e) => setCallbackForm({ ...callbackForm, name: e.target.value })}
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-[#1B4332] outline-none"
-                    />
-                  </div>
+              <div className="space-y-3 pt-2">
+                <button
+                  onClick={() => onOpenBookingModal('online')}
+                  className="w-full bg-[#1B4332] text-white py-3.5 px-6 rounded-2xl font-display font-bold text-xs sm:text-sm hover:bg-[#004b57] transition-all shadow-md flex items-center justify-center gap-2"
+                >
+                  <Calendar className="w-4 h-4 text-[#D8F3DC]" />
+                  <span>Schedule Online Slot</span>
+                </button>
 
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+91 98765 43210"
-                      value={callbackForm.phone}
-                      onChange={(e) => setCallbackForm({ ...callbackForm, phone: e.target.value })}
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-[#1B4332] outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
-                      Primary Concern *
-                    </label>
-                    <select
-                      value={callbackForm.concern}
-                      onChange={(e) => setCallbackForm({ ...callbackForm, concern: e.target.value })}
-                      className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-[#1B4332] outline-none"
-                    >
-                      <option value="Piles & Fissures Care">Piles & Fissures Care</option>
-                      <option value="Thyroid & Hormonal Health">Thyroid Care</option>
-                      <option value="Alopecia & Hair Loss">Hair Loss & Alopecia</option>
-                      <option value="Skin, Psoriasis & Eczema">Skin, Eczema & Psoriasis</option>
-                      <option value="Asthma & Respiratory">Asthma & Sinus Allergy</option>
-                      <option value="PCOS & Women Health">PCOS & Women's Care</option>
-                      <option value="Other Health Issue">Other Health Issue</option>
-                    </select>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-[#1B4332] text-white py-3 rounded-xl font-display font-bold text-xs hover:bg-[#004b57] transition-all shadow-md"
-                  >
-                    Submit Callback Request
-                  </button>
-                </form>
-              )}
+                <a
+                  href="https://wa.me/919801360376?text=Hello%20Subhash%20Homoeo%20Clinic,%20I%20would%20like%20to%20book%20an%20online%20consultation."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-[#2D6A4F]/10 text-[#2D6A4F] border border-[#2D6A4F]/30 py-3.5 px-6 rounded-2xl font-display font-bold text-xs sm:text-sm hover:bg-[#2D6A4F]/20 transition-all flex items-center justify-center gap-2"
+                >
+                  <MessageCircle className="w-4 h-4 fill-current text-[#2D6A4F]" />
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
             </div>
 
           </div>

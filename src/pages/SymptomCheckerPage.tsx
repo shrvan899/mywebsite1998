@@ -154,20 +154,21 @@ export const SymptomCheckerPage: React.FC<SymptomCheckerPageProps> = ({
 
           <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row gap-3">
             <button
-              onClick={() => onOpenBookingModal('clinic')}
+              onClick={() => onOpenBookingModal('online')}
               className="flex-1 bg-[#1B4332] text-white py-3.5 px-4 rounded-2xl font-display font-bold text-xs sm:text-sm shadow-md hover:bg-[#004b57] transition-all flex items-center justify-center gap-2"
             >
-              <Calendar className="w-4 h-4 text-[#D8F3DC]" />
-              <span>Book In-Clinic Visit (Bokaro)</span>
-            </button>
-
-            <button
-              onClick={() => onOpenBookingModal('online')}
-              className="flex-1 bg-[#006970] text-white py-3.5 px-4 rounded-2xl font-display font-bold text-xs sm:text-sm shadow-md hover:bg-[#004b57] transition-all flex items-center justify-center gap-2"
-            >
-              <Sparkles className="w-4 h-4 text-[#7DF4FF]" />
+              <Sparkles className="w-4 h-4 text-[#D8F3DC]" />
               <span>Book Online Consultation</span>
             </button>
+
+            <a
+              href="https://wa.me/919801360376?text=Hello%20Subhash%20Homoeo%20Clinic,%20I%20have%20a%20symptom%20query."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 bg-[#2D6A4F]/10 text-[#2D6A4F] border border-[#2D6A4F]/30 py-3.5 px-4 rounded-2xl font-display font-bold text-xs sm:text-sm hover:bg-[#2D6A4F]/20 transition-all flex items-center justify-center gap-2"
+            >
+              <span>Consult via WhatsApp</span>
+            </a>
           </div>
 
         </div>

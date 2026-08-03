@@ -43,10 +43,17 @@ export const OnlineConsultationPage: React.FC<OnlineConsultationPageProps> = ({
     const code = 'SHC-ONL-' + Math.floor(100000 + Math.random() * 900000);
     setBookingCode(code);
     setSubmitted(true);
+
+    const msg = encodeURIComponent(
+      `Hello Dr. Subhash Clinic,\nI submitted an Online Consultation request.\n*Ref Code:* ${code}\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Age/Gender:* ${formData.age} yrs (${formData.gender})\n*City:* ${formData.city}\n*Condition:* ${formData.condition}\n*Details:* ${formData.details || 'N/A'}`
+    );
+
+    // Auto-open WhatsApp
+    window.open(`https://wa.me/919801360376?text=${msg}`, '_blank');
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Subhash Homoeo Clinic,\nI submitted an Online Consultation request.\n*Ref:* ${bookingCode}\n*Name:* ${formData.name}\n*City:* ${formData.city}\n*Condition:* ${formData.condition}`
+    `Hello Dr. Subhash Clinic,\nI submitted an Online Consultation request.\n*Ref Code:* ${bookingCode}\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Age/Gender:* ${formData.age} yrs (${formData.gender})\n*City:* ${formData.city}\n*Condition:* ${formData.condition}\n*Details:* ${formData.details || 'N/A'}`
   );
 
   return (
@@ -147,7 +154,7 @@ export const OnlineConsultationPage: React.FC<OnlineConsultationPageProps> = ({
 
             <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
               <a
-                href={`https://wa.me/919341872726?text=${whatsappMessage}`}
+                href={`https://wa.me/919801360376?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#2D6A4F] text-white py-3 px-6 rounded-2xl font-display font-bold text-xs flex items-center justify-center gap-2 shadow-md hover:bg-emerald-800 transition-colors"
@@ -281,28 +288,26 @@ export const OnlineConsultationPage: React.FC<OnlineConsultationPageProps> = ({
 
       </section>
 
-      {/* 3. WHATSAPP INSTANT BOX */}
+      {/* 3. CALL NOW / QUICK DIRECT CONTACT BOX */}
       <section className="bg-[#2D6A4F] text-white rounded-[2.5rem] p-8 sm:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="space-y-3 text-center md:text-left">
           <span className="inline-block px-3 py-1 bg-white/20 text-white rounded-full text-xs font-semibold">
-            Instant Direct WhatsApp
+            Call Now
           </span>
           <h3 className="font-display font-bold text-2xl sm:text-3xl text-white">
             Need an Immediate Consultation Slot?
           </h3>
           <p className="text-xs sm:text-sm text-emerald-100 max-w-lg">
-            Connect directly with Dr. Subhash’s clinical desk on WhatsApp for real-time slot booking and instant prescription dispatch details.
+            Connect directly with Dr. Subhash’s clinical desk for real-time slot booking and instant prescription dispatch details.
           </p>
         </div>
 
         <a
-          href="https://wa.me/919341872726"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="tel:+919341872726"
           className="bg-white text-[#2D6A4F] px-8 py-4 rounded-2xl font-display font-bold text-sm hover:bg-[#D8F3DC] transition-colors shadow-lg shrink-0 flex items-center gap-2"
         >
-          <MessageCircle className="w-5 h-5 fill-current" />
-          <span>WhatsApp: +91 93418 72726</span>
+          <Phone className="w-5 h-5 fill-current" />
+          <span>Call Now: +91 93418 72726</span>
         </a>
       </section>
 

@@ -60,11 +60,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
           <div className="pt-2 flex flex-wrap gap-4">
             <button
-              onClick={() => onOpenBookingModal('clinic')}
+              onClick={() => onOpenBookingModal('online')}
               className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-3.5 rounded-2xl font-display font-semibold text-sm shadow-lg hover:brightness-110 transition-all flex items-center gap-2 border border-white/20"
             >
-              <Calendar className="w-4 h-4 text-emerald-100" />
-              <span>Book Clinic Visit (Bokaro)</span>
+              <Sparkles className="w-4 h-4 text-emerald-100" />
+              <span>Book Online Consultation</span>
             </button>
 
             <button

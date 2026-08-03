@@ -86,7 +86,7 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({
             placeholder="Search condition (e.g., Piles, Thyroid, Hair Loss, Asthma, PCOS, Eczema)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:bg-white focus:border-[#1B4332] outline-none transition-all"
+            className="w-full pl-11 pr-4 py-3 bg-slate-100 border border-slate-300 rounded-2xl text-sm font-semibold text-slate-900 placeholder-slate-500 focus:bg-white focus:border-[#1B4332] focus:ring-2 focus:ring-[#1B4332]/20 outline-none transition-all shadow-inner"
           />
         </div>
 

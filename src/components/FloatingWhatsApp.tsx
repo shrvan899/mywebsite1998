@@ -9,7 +9,7 @@ export const FloatingWhatsApp: React.FC = () => {
     e.preventDefault();
     if (!userMsg.trim()) return;
     const encoded = encodeURIComponent(`Hello Subhash Homoeo Clinic,\n${userMsg}`);
-    window.open(`https://wa.me/919341872726?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/919801360376?text=${encoded}`, '_blank');
     setUserMsg('');
     setOpen(false);
   };
