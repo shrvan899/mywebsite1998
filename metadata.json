@@ -1,0 +1,6 @@
+{
+  "name": "Subhash Homoeo Clinic",
+  "description": "Clean, holistic homeopathic healthcare portal for Subhash Homoeo Clinic featuring specialized treatments, online consultation, clinic appointment booking, and patient resources.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
